@@ -30,7 +30,7 @@ class TurboView @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     internal val webViewRefresh: SwipeRefreshLayout? get() = webViewContainer as? SwipeRefreshLayout
     internal val errorRefresh: SwipeRefreshLayout? get() = findViewById(R.id.turbo_error_refresh)
 
-    internal fun attachWebView(webView: WebView, onAttachedToNewDestination: (Boolean) -> Unit) {
+    fun attachWebView(webView: WebView, onAttachedToNewDestination: (Boolean) -> Unit) {
         if (webView.parent != null) {
             onAttachedToNewDestination(false)
             return

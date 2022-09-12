@@ -4,7 +4,7 @@ import android.webkit.HttpAuthHandler
 import dev.hotwire.turbo.nav.TurboNavDestination
 import dev.hotwire.turbo.visit.TurboVisitOptions
 
-internal interface TurboSessionCallback {
+interface TurboSessionCallback {
     fun onPageStarted(location: String)
     fun onPageFinished(location: String)
     fun onReceivedError(errorCode: Int)
@@ -18,7 +18,7 @@ internal interface TurboSessionCallback {
     fun visitCompleted(completedOffline: Boolean)
     fun visitLocationStarted(location: String)
     fun visitProposedToLocation(location: String, options: TurboVisitOptions)
-    fun visitNavDestination(): TurboNavDestination
+    fun visitNavDestination(): TurboNavDestination?
     fun formSubmissionStarted(location: String)
     fun formSubmissionFinished(location: String)
 }
