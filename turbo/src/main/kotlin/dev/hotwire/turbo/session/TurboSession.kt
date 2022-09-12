@@ -37,7 +37,7 @@ import java.util.*
  * @property webView An instance of a [TurboWebView] to be shared/managed.
  */
 @Suppress("unused")
-class TurboSession internal constructor(
+class TurboSession constructor(
     internal val sessionName: String,
     private val activity: AppCompatActivity,
     val webView: TurboWebView
@@ -138,7 +138,7 @@ class TurboSession internal constructor(
 
     // Internal
 
-    internal fun visit(visit: TurboVisit) {
+    fun visit(visit: TurboVisit) {
         this.currentVisit = visit
         callback { it.visitLocationStarted(visit.location) }
 
@@ -571,9 +571,7 @@ class TurboSession internal constructor(
     private fun callback(action: (TurboSessionCallback) -> Unit) {
         context.runOnUiThread {
             currentVisit?.callback?.let { callback ->
-                if (callback.visitNavDestination().isActive) {
-                    action(callback)
-                }
+                action(callback)
             }
         }
     }
