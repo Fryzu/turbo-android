@@ -571,7 +571,10 @@ class TurboSession constructor(
     private fun callback(action: (TurboSessionCallback) -> Unit) {
         context.runOnUiThread {
             currentVisit?.callback?.let { callback ->
-                action(callback)
+                val visitDestination = callback.visitNavDestination()
+                if (visitDestination == null || visitDestination?.isActive) {
+                    action(callback)
+                }
             }
         }
     }
